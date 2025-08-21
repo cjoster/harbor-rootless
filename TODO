@@ -1,0 +1,6 @@
+Move /data to /var/lib/harbor
+Get the z/Z right on the mounts
+Figure out the restart issue with the network
+Make user a system user
+Move proxy env variables to common env file and includ in all
+Fix no_proxy for new hostnames

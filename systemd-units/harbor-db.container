@@ -1,0 +1,12 @@
+[Container]
+ContainerName=harbor-db
+Pod=harbor.pod
+Image=goharbor/harbor-db:v2.13.0
+DropCapability=ALL
+AddCapability=CHOWN DAC_OVERRIDE SETGID SETUID
+EnvironmentFile=harbor-db.env
+Network=harbor.network
+Volume=/data/database:/var/lib/postgresql/data:Z
+
+[Service]
+Restart=always

@@ -1,0 +1,6 @@
+[Network]
+Driver=bridge
+NetworkName=harbor
+
+[Install]
+WantedBy=default.target
