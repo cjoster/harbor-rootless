@@ -5,18 +5,18 @@ After=harbor-registry.service harbor-redis.service harbor-db.service
 [Container]
 ContainerName=harbor-core
 Pod=harbor.pod
-Image=goharbor/harbor-core:v2.13.0
+Image=docker.io/goharbor/harbor-core:v2.13.0
 DropCapability=ALL
 AddCapability=SETGID SETUID
 EnvironmentFile=harbor-core.env
 Network=harbor.network
-Volume=/data/:/data/:z
-Volume=/data/ca_download/:/etc/core/ca/:z
-Volume=/data/secret/core/private_key.pem:/etc/core/private_key.pem:z
-Volume=/data/secret/keys/secretkey:/etc/core/key:z
-Volume=/home/harbor/harbor-rootless/harbor-core/certificates/:/etc/core/certificates/:z
-Volume=/home/harbor/harbor-rootless/harbor-core/app.conf:/etc/core/app.conf:z
-Volume=/home/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert:z
+Volume=/var/lib/harbor/data/:/data/:z
+Volume=/var/lib/harbor/data/ca_download/:/etc/core/ca/:z
+Volume=/var/lib/harbor/data/secret/core/private_key.pem:/etc/core/private_key.pem:z
+Volume=/var/lib/harbor/data/secret/keys/secretkey:/etc/core/key:z
+Volume=/etc/harbor/harbor-rootless/harbor-core/certificates/:/etc/core/certificates/:z
+Volume=/etc/harbor/harbor-rootless/harbor-core/app.conf:/etc/core/app.conf:z
+Volume=/etc/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert:z
 
 [Service]
 Restart=always

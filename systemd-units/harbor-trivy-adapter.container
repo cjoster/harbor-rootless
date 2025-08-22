@@ -1,13 +1,13 @@
 [Container]
 ContainerName=harbor-trivy-adapter
 Pod=harbor.pod
-Image=goharbor/trivy-adapter-photon:v2.13.0
+Image=docker.io/goharbor/trivy-adapter-photon:v2.13.0
 DropCapability=ALL
 Environment=harbor-trivy-adapter.env
 Network=harbor.network
-Volume=/data/trivy-adapter/trivy:/home/scanner/.cache/trivy
-Volume=/data/trivy-adapter/reports:/home/scanner/.cache/reports
-Volume=/home/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert
+Volume=/var/lib/harbor/data/trivy-adapter/trivy:/home/scanner/.cache/trivy
+Volume=/var/lib/harbor/data/trivy-adapter/reports:/home/scanner/.cache/reports
+Volume=/etc/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert
 
 [Service]
 Restart=always

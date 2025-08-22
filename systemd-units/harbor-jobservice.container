@@ -5,14 +5,14 @@ After=harbor-core.service
 [Container]
 ContainerName=harbor-jobservice
 Pod=harbor.pod
-Image=goharbor/harbor-jobservice:v2.13.0
+Image=docker.io/goharbor/harbor-jobservice:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID
 EnvironmentFile=harbor-jobservice.env
 Network=harbor.network
-Volume=/data/job_logs:/var/log/jobs:z
-Volume=/home/harbor/harbor-rootless/harbor-jobservice/config.yml:/etc/jobservice/config.yml:z
-Volume=/home/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert:z
+Volume=/var/lib/harbor/data/job_logs:/var/log/jobs:z
+Volume=/etc/harbor/harbor-rootless/harbor-jobservice/config.yml:/etc/jobservice/config.yml:z
+Volume=/etc/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert:z
 
 [Service]
 Restart=always

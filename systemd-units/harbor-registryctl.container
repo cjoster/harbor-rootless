@@ -1,15 +1,15 @@
 [Container]
 ContainerName=harbor-registryctl
 Pod=harbor.pod
-Image=goharbor/harbor-registryctl:v2.13.0
+Image=docker.io/goharbor/harbor-registryctl:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID
 EnvironmentFile=harbor-registryctl.env
 Network=harbor.network
-Volume=/data/registry:/storage:z
-Volume=/home/harbor/harbor-rootless/harbor-registry/:/etc/registry/:z
-Volume=/home/harbor/harbor-rootless/harbor-registryctl/config.yml:/etc/registryctl/config.yml:z
-Volume=/home/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert:z
+Volume=/var/lib/harbor/data/registry:/storage:z
+Volume=/etc/harbor/harbor-rootless/harbor-registry/:/etc/registry/:z
+Volume=/etc/harbor/harbor-rootless/harbor-registryctl/config.yml:/etc/registryctl/config.yml:z
+Volume=/etc/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert:z
 
 [Service]
 Restart=always

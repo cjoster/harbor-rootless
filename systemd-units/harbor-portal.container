@@ -1,11 +1,11 @@
 [Container]
 ContainerName=harbor-portal
 Pod=harbor.pod
-Image=goharbor/harbor-portal:v2.13.0
+Image=docker.io/goharbor/harbor-portal:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID NET_BIND_SERVICE
 Network=harbor.network
-Volume=/home/harbor/harbor-rootless/harbor-portal/nginx.conf:/etc/nginx/nginx.conf:z
+Volume=/etc/harbor/harbor-rootless/harbor-portal/nginx.conf:/etc/nginx/nginx.conf:z
 
 [Service]
 Restart=always

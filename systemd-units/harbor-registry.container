@@ -1,14 +1,14 @@
 [Container]
 ContainerName=harbor-registry
 Pod=harbor.pod
-Image=goharbor/registry-photon:v2.13.0
+Image=docker.io/goharbor/registry-photon:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID
 Network=harbor.network
-Volume=/data/registry:/storage:z
-Volume=/data/secret/registry/root.crt:/etc/registry/root.crt:z
-Volume=/home/harbor/harbor-rootless/harbor-registry/:/etc/registry/:z
-Volume=/home/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert:z
+Volume=/var/lib/harbor/data/registry:/storage:z
+Volume=/var/lib/harbor/data/secret/registry/root.crt:/etc/registry/root.crt:z
+Volume=/etc/harbor/harbor-rootless/harbor-registry/:/etc/registry/:z
+Volume=/etc/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert:z
 
 [Service]
 Restart=always
