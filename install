@@ -18,7 +18,8 @@ mkdir -p ~/.config/containers/systemd || die "Could not create systend container
 
 units=($(ls systemd-units))
 for f in "${units[@]}"; do
-	ln -s "${PWD}/systemd-units/${f}" ~/.config/containers/systemd/"${f}" || die "Error symlinking file \"${f}\"."
+	[ ! -f ~/.config/containers/systemd/"${f}" ] || { log "Not installing \"${f}\". File exists."; continue; }
+	ln -s "${PWD}/systemd-units/${f}" ~/.config/containers/systemd/"${f}" || "Error symlinking file \"${f}\"." 
 done
 
 systemctl --user daemon-reload
