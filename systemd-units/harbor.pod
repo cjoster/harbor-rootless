@@ -1,7 +1,7 @@
 [Unit]
 Description=Harbor Pod
-Requires=harbor.network
-After=harbor.network
+#Requires=harbor.network
+#After=harbor.network
 Requires=harbor-network.service
 After=harbor-network.service
 

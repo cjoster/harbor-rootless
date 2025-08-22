@@ -6,7 +6,7 @@ DropCapability=ALL
 AddCapability=CHOWN DAC_OVERRIDE SETGID SETUID
 EnvironmentFile=harbor-db.env
 Network=harbor.network
-Volume=/data/database:/var/lib/postgresql/data:Z
+Volume=${HOME}/data/database:/var/lib/postgresql/data:Z
 
 [Service]
-Restart=always
+#Restart=always

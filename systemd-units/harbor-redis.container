@@ -5,7 +5,7 @@ Image=docker.io/goharbor/redis-photon:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID
 Network=harbor.network
-Volume=/data/redis:/var/lib/redis,Z
+Volume=${HOME}/data/redis:/var/lib/redis,Z
 
 [Service]
-Restart=always
+#Restart=always

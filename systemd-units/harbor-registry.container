@@ -5,10 +5,10 @@ Image=docker.io/goharbor/registry-photon:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID
 Network=harbor.network
-Volume=/data/registry:/storage:z
-Volume=/data/secret/registry/root.crt:/etc/registry/root.crt:z
-Volume=/home/harbor/harbor-rootless/harbor-registry/:/etc/registry/:z
-Volume=/home/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert:z
+Volume=${HOME}/data/registry:/storage:z
+Volume=${HOME}/data/secret/registry/root.crt:/etc/registry/root.crt:z
+Volume=${HOME}/harbor-registry/:/etc/registry/:z
+Volume=${HOME}/trust-certificates:/harbor_cust_cert:z
 
 [Service]
-Restart=always
+#Restart=always

@@ -6,10 +6,10 @@ DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID
 EnvironmentFile=harbor-registryctl.env
 Network=harbor.network
-Volume=/data/registry:/storage:z
-Volume=/home/harbor/harbor-rootless/harbor-registry/:/etc/registry/:z
-Volume=/home/harbor/harbor-rootless/harbor-registryctl/config.yml:/etc/registryctl/config.yml:z
-Volume=/home/harbor/harbor-rootless/trust-certificates:/harbor_cust_cert:z
+Volume=${HOME}/data/registry:/storage:z
+Volume=${HOME}/harbor-registry/:/etc/registry/:z
+Volume=${HOME}/harbor-registryctl/config.yml:/etc/registryctl/config.yml:z
+Volume=${HOME}/trust-certificates:/harbor_cust_cert:z
 
 [Service]
-Restart=always
+#Restart=always

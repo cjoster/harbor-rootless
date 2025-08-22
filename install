@@ -22,4 +22,6 @@ for f in "${units[@]}"; do
 	ln -s "${PWD}/systemd-units/${f}" ~/.config/containers/systemd/"${f}" || "Error symlinking file \"${f}\"." 
 done
 
+cp -dpR config/* trust-certificates ~/
+
 systemctl --user daemon-reload
