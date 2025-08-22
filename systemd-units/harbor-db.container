@@ -1,7 +1,7 @@
 [Container]
 ContainerName=harbor-db
 Pod=harbor.pod
-Image=goharbor/harbor-db:v2.13.0
+Image=docker.io/goharbor/harbor-db:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN DAC_OVERRIDE SETGID SETUID
 EnvironmentFile=harbor-db.env

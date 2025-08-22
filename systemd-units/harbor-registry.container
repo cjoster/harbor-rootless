@@ -1,7 +1,7 @@
 [Container]
 ContainerName=harbor-registry
 Pod=harbor.pod
-Image=goharbor/registry-photon:v2.13.0
+Image=docker.io/goharbor/registry-photon:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID
 Network=harbor.network

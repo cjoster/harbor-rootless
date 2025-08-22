@@ -1,7 +1,7 @@
 [Container]
 ContainerName=harbor-registryctl
 Pod=harbor.pod
-Image=goharbor/harbor-registryctl:v2.13.0
+Image=docker.io/goharbor/harbor-registryctl:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID
 EnvironmentFile=harbor-registryctl.env

@@ -1,7 +1,7 @@
 [Container]
 ContainerName=harbor-trivy-adapter
 Pod=harbor.pod
-Image=goharbor/trivy-adapter-photon:v2.13.0
+Image=docker.io/goharbor/trivy-adapter-photon:v2.13.0
 DropCapability=ALL
 Environment=harbor-trivy-adapter.env
 Network=harbor.network

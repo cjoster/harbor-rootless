@@ -5,7 +5,7 @@ After=harbor-registry.service harbor-redis.service harbor-db.service
 [Container]
 ContainerName=harbor-core
 Pod=harbor.pod
-Image=goharbor/harbor-core:v2.13.0
+Image=docker.io/goharbor/harbor-core:v2.13.0
 DropCapability=ALL
 AddCapability=SETGID SETUID
 EnvironmentFile=harbor-core.env

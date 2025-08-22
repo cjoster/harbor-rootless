@@ -5,7 +5,7 @@ After=harbor-core.service
 [Container]
 ContainerName=harbor-jobservice
 Pod=harbor.pod
-Image=goharbor/harbor-jobservice:v2.13.0
+Image=docker.io/goharbor/harbor-jobservice:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID
 EnvironmentFile=harbor-jobservice.env

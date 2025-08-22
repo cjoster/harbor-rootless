@@ -1,7 +1,7 @@
 [Container]
 ContainerName=harbor-redis
 Pod=harbor.pod
-Image=goharbor/redis-photon:v2.13.0
+Image=docker.io/goharbor/redis-photon:v2.13.0
 DropCapability=ALL
 AddCapability=CHOWN SETGID SETUID
 Network=harbor.network
