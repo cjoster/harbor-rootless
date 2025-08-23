@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+cf="harbor.yaml"
+
+set -euo pipefail
+[ -z "${DEBUG+x}" ] || { >&2 echo "${PS4}\"DEBUG\" environment variable set. Enabling debugging output."; set -x; }
+
+function log() {
+	>&2 echo "${@:-}"
+}
+
+function die() {
+	log "FATAL ${@:-Unknown fatal error.}"
+	exit 1
+}
+
+type -t yq > /dev/null 2>&1 || {
+	log "This script requires the \`yq\` binary to parse YAML files."
+	log "Please run \"./install-yq\" in this repo first."
+	log
+	die "Missing binaries."
+}
+
+[ -f "${cf}" ] && [ -r "${cf}" ] || die "Harbor config file \"${cf}\" does not exist or is not readable."
+host="$(yq e '.external_hostname // ""' "${cf}")" && [ -n "${host}" ] || die "Must configure \"external_hostname\" in \"${cf}\"."
+
+ca="$(yq e '.enterprise_ca // ""' "${cf}")"
+[ -z "${ca}" ] || [ -f "${ca}" ] || die "CA file \"${ca}\" from "${cf}" does not exist."
+[ -r "${ca}" ] || die "CA file \"${ca}\" from "${cf}" is not readable."
+mkdir -p /var/lib/harbor/trust-certificates
+[ -z "${ca}" ] || cp "${ca}" /var/lib/harbor/trust-certificates
+
+cert="$(yq e '.tls_cert_file // ""' "${cf}")"
+key="$(yq e '.tls_key_file // ""' "${cf}")"
+if [ -n "${cert}" ] && [ ! -n "${key}" ] || [ ! -n "${cert}" ] && [ -n "${key}" ]; then
+	die "Both or neither of tls_cert_file and tls_key_file must be specified in \"${cf}\"."
+fi
+
+[ -n "${cert}" ] && [ -r "${cert}" ] && [ -r "${key}" ] || die "TLS certificate (\"${cert}\") or key (\"${key}\") are unreadable."
+
+mkdir -p /var/lib/harbor/data
+
+mkdir -p /var/lib/harbor/data/database
+
+mkdir -p /var/lib/harbor/data/registry
+mkdir -p /var/lib/harbor/data/secret/registry/
+# FIXME FIXME FIXME
+cp -f /mydata/secret/registry/root.crt /var/lib/harbor/data/secret/registry/
+
+mkdir -p /var/lib/harbor/data/redis
+
+mkdir -p /var/lib/harbor/data/ca_download
+# FIXME FIXME FIXME
+mkdir -p /var/lib/harbor/data/secret/core/
+cp -f /mydata/secret/core/private_key.pem /var/lib/harbor/data/secret/core/
+
+mkdir -p /var/lib/harbor/data/secret/keys/secretkey
+mkdir -p /var/lib/harbor/harbor-core/certificates
+
+mkdir -p /var/lib/harbor/data/secret/cert
+[ -n "${cert}" ] && { cp "${cert}" /var/lib/harbor/data/secret/cert/server.crt; cp "${key}" /var/lib/harbor/data/secret/cert/server.key; chmod 755 /var/lib/harbor/data/secret/cert/*; }
+
+mkdir -p /var/lib/harbor/data/trivy-adapter/trivy
+mkdir -p /var/lib/harbor/data/trivy-adapter/reports
+
+mkdir -p /var/lib/harbor/data/job_logs

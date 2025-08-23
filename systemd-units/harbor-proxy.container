@@ -12,8 +12,8 @@ Network=harbor.network
 PublishPort=80:8080
 PublishPort=443:8443
 Volume=${HOME}/data/secret/cert:/etc/cert:z
-Volume=${HOME}/harbor-rootless/harbor-proxy:/etc/nginx:z
-Volume=${HOME}/harbor-rootless/trust-certificates:/harbor_cust_cert:z
+Volume=${HOME}/harbor-proxy:/etc/nginx:z
+Volume=${HOME}/trust-certificates:/harbor_cust_cert:z
 
 [Service]
 #Restart=always

@@ -12,7 +12,7 @@ function die() {
 	exit 1
 }
 
-[ "${0}" == "./install" ] || die "This script assumes your working directory to be the root of the git repository."
+[ "${0}" == "./install-harbor" ] || die "This script assumes your working directory to be the root of the git repository."
 
 mkdir -p ~/.config/containers/systemd || die "Could not create systend container directory."
 

@@ -7,7 +7,7 @@ Environment=harbor-trivy-adapter.env
 Network=harbor.network
 Volume=${HOME}/data/trivy-adapter/trivy:/home/scanner/.cache/trivy
 Volume=${HOME}/data/trivy-adapter/reports:/home/scanner/.cache/reports
-Volume=${HOME}/harbor-rootless/trust-certificates:/harbor_cust_cert
+Volume=${HOME}/trust-certificates:/harbor_cust_cert
 
 [Service]
 #Restart=always

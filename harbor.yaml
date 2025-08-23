@@ -1,0 +1,5 @@
+---
+external_hostname: harbor.home.osterfam.com
+enterprise_ca: /etc/pki/ca-trust/source/anchors/Oster_Home_Root_CA.pem
+tls_cert_file: /etc/pki/tls/certs/harbor.home.osterfam.com.crt
+tls_key_file: /etc/pki/tls/private/harbor.home.osterfam.com.key

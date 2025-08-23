@@ -11,8 +11,8 @@ AddCapability=CHOWN SETGID SETUID
 EnvironmentFile=harbor-jobservice.env
 Network=harbor.network
 Volume=${HOME}/data/job_logs:/var/log/jobs:z
-Volume=${HOME}/harbor-rootless/harbor-jobservice/config.yml:/etc/jobservice/config.yml:z
-Volume=${HOME}/harbor-rootless/trust-certificates:/harbor_cust_cert:z
+Volume=${HOME}/harbor-jobservice/config.yml:/etc/jobservice/config.yml:z
+Volume=${HOME}/trust-certificates:/harbor_cust_cert:z
 
 [Service]
 #Restart=always
