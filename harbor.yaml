@@ -1,5 +1,22 @@
 ---
-external_hostname: harbor.home.osterfam.com
+# Configuration file of Harbor
+
+# The IP address or hostname to access admin UI and registry service.
+hostname: harbor.home.osterfam.com
+
 enterprise_ca: /etc/pki/ca-trust/source/anchors/Oster_Home_Root_CA.pem
-tls_cert_file: /etc/pki/tls/certs/harbor.home.osterfam.com.crt
-tls_key_file: /etc/pki/tls/private/harbor.home.osterfam.com.key
+
+# http related config
+http:
+  # port for http, default is 80. If https enabled, this port will redirect to https port
+  port: 80
+
+# https related config
+https:
+  # https port for harbor, default is 443
+  port: 443
+  # The path of cert and key files for nginx
+  certificate: /etc/pki/tls/certs/harbor.home.osterfam.com.crt
+  private_key: /etc/pki/tls/private/harbor.home.osterfam.com.key
+  # enable strong ssl ciphers (default: false)
+  # strong_ssl_ciphers: false

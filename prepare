@@ -30,8 +30,8 @@ ca="$(yq e '.enterprise_ca // ""' "${cf}")"
 mkdir -p /var/lib/harbor/trust-certificates
 [ -z "${ca}" ] || cp "${ca}" /var/lib/harbor/trust-certificates
 
-cert="$(yq e '.tls_cert_file // ""' "${cf}")"
-key="$(yq e '.tls_key_file // ""' "${cf}")"
+cert="$(yq e '.https.certificate // ""' "${cf}")"
+key="$(yq e '.https.private_key // ""' "${cf}")"
 if [ -n "${cert}" ] && [ ! -n "${key}" ] || [ ! -n "${cert}" ] && [ -n "${key}" ]; then
 	die "Both or neither of tls_cert_file and tls_key_file must be specified in \"${cf}\"."
 fi
